@@ -1,5 +1,5 @@
 .zsh_history
 .bash_history
 nvim/plugged/*
-!.nvim/.gitkeep
+!nvim/.gitkeep
 nvim/others/
