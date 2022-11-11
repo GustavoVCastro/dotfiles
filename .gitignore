@@ -1,0 +1,4 @@
+.zsh_history
+.bash_history
+nvim/plugged/*
+nvim/others/
