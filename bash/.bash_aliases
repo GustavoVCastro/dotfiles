@@ -1,0 +1,10 @@
+alias python="python3"
+alias t="tmux"
+alias f="fzf"
+alias u="sudo apt update && sudo apt -y upgrade && sudo apt autoclean && sudo apt -y autoremove"
+alias update="sudo apt update && sudo apt upgrade"
+alias cvim="vim /home/aldebaran/.config/nvim/init.vim"
+alias copy="xclip -sel c <"
+alias dozip="7z a -tzip -mm=deflate -mfb=258 -mpass=15"
+alias do7z="7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on"
+
