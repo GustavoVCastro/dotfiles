@@ -3,3 +3,4 @@
 nvim/plugged/*
 !nvim/plugged/.gitkeep
 nvim/others/
+fetch-files.sh
