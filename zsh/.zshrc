@@ -114,23 +114,6 @@ fi
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-#>>> conda initialize >>>
-#!! Contents within this block are managed by 'conda init' !!
- 
-#__conda_setup="$('/home/aldebaran/.local/src/anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-    #eval "$__conda_setup"
-#else
-    #if [ -f "/home/aldebaran/.local/src/anaconda/etc/profile.d/conda.sh" ]; then
-# . "/home/aldebaran/.local/src/anaconda/etc/profile.d/conda.sh"  # commented out by conda initialize
-    #else
-# export PATH="/home/aldebaran/.local/src/anaconda/bin:$PATH"  # commented out by conda initialize
-    #fi
-#fi
-#unset __conda_setup
-
-#<<< conda initialize <<<
-
 # Load ~/.profile
 if [ -f "$HOME/.profile" ]; then
   source "$HOME/.profile"
@@ -141,7 +124,7 @@ if [ -f "$HOME/.zsh_aliases" ]; then
   source "$HOME/.zsh_aliases"
 fi
 
-# Load ~/.zsh_conda
+#Load ~/.zsh_conda
 #if [ -f "$HOME/.zsh_conda" ]; then
   #source "$HOME/.zsh_conda"
 #fi
