@@ -2,7 +2,7 @@
 alias python="python3"
 alias t="tmux"
 alias f="fzf"
-alias u="sudo apt update && sudo apt -y upgrade && sudo apt autoclean && sudo apt -y autoremove && sudo snap refresh"
+alias u="sudo apt update && sudo apt -y upgrade && sudo apt autoclean && sudo apt -y autoremove && sudo snap refresh && sudo apt -y dist-upgrade"
 alias update="sudo apt update && sudo apt upgrade"
 alias cvim="vim /home/aldebaran/.config/nvim/init.vim"
 alias calacritty="vim /home/aldebaran/.config/alacritty/alacritty.yml"
@@ -19,3 +19,4 @@ alias pixemu="~/Android/Sdk/emulator/emulator -avd Pixel_API_33"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias lt='ls -lsth'
