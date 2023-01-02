@@ -1,7 +1,7 @@
 " Settings ========================================================================================
 syntax on
 
-set encoding=utf-8  "Encoding must be UTF-8 on all files for YCM to work 
+set encoding=utf-8  "Encoding must be UTF-8 on all files for YCM to work
 set noerrorbells
 set tabstop=2
 set softtabstop=2
@@ -26,7 +26,7 @@ set laststatus=3
 
 "Colors and vertical bar
 if has('termguicolors')
-    set termguicolors "true colors support
+  set termguicolors "true colors support
 endif
 
 set colorcolumn=100
@@ -55,7 +55,7 @@ highlight Comment ctermfg=green
 " Pluggins ========================================================================================
 call plug#begin('$HOME/.config/nvim/plugged')
 
-" Colorschemes  
+" Colorschemes
 Plug 'https://github.com/gryf/wombat256grf'
 Plug 'https://github.com/arzg/vim-colors-xcode'
 Plug 'https://github.com/tomasr/molokai'
@@ -67,8 +67,8 @@ Plug 'ayu-theme/ayu-vim'
 "Plug 'https://github.com/tomasiser/vim-code-dark'
 "Plug 'morhetz/gruvbox'
 "Plug 'https://github.com/atahabaki/archman-vim'
-"Plug 'chriskempson/base16-vim'	"base16
-"Plug 'https://github.com/lifepillar/vim-solarized8'	"solarized
+"Plug 'chriskempson/base16-vim' "base16
+"Plug 'https://github.com/lifepillar/vim-solarized8'  "solarized
 
 " Syntax Highlighting
 Plug 'https://github.com/octol/vim-cpp-enhanced-highlight'
@@ -88,18 +88,21 @@ Plug 'mattn/emmet-vim'
 " Vim Fuzzy Finder
 Plug 'https://github.com/junegunn/fzf'
 
+" Autoformating
+Plug 'https://github.com/chiel92/vim-autoformat'
+
 "Others
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree' " file tree side panel
-Plug 'junegunn/goyo.vim'  
-Plug 'jreybert/vimagit'   
+Plug 'junegunn/goyo.vim'
+Plug 'jreybert/vimagit'
 Plug 'ap/vim-css-color'   " highlights hex code with respective color
 Plug 'https://github.com/preservim/nerdcommenter' " comment line with quick keybinding
 Plug 'https://github.com/dyng/ctrlsf.vim'
 
 " Currently not in use ----------------------------------------------------------------------------
 "Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-"Plug 'sheerun/vim-polyglot'	"not good
+"Plug 'sheerun/vim-polyglot'  "not good
 "Plug 'https://github.com/vim-python/python-syntax'
 "Plug 'LukeSmithxyz/vimling'
 "Plug 'https://github.com/honza/vim-snippets'
@@ -112,9 +115,9 @@ call plug#end()
 
 " Colorscheme settings ============================================================================
 colorscheme molokai
-    let g:molokai_original = 1
-    let g:rehash256 = 1
-    let g:molokai_transparent_background = 1
+let g:molokai_original = 1
+let g:rehash256 = 1
+let g:molokai_transparent_background = 1
 
 " Currently not in use ----------------------------------------------------------------------------
 "let g:sonokai_style = 'default'
@@ -145,11 +148,11 @@ colorscheme molokai
 "colorscheme slate
 "colorscheme morning
 "colorscheme xcodedark
-" The configuration options should be placed before `colorscheme sonokai`.   
+" The configuration options should be placed before `colorscheme sonokai`.
 "colorscheme archman
 "colorscheme base16-default-dark
-	"let base16colorspace=256  " Access colors present in 256 colorspace
-	"set termguicolors
+"let base16colorspace=256  " Access colors present in 256 colorspace
+"set termguicolors
 "colorscheme solarized8
 
 
@@ -192,32 +195,32 @@ nnoremap nd :NERDTreeToggle<CR>
 
 " Custom Functions ================================================================================
 function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
 endfunction
 map <C-F2> :call RenameFile()<cr>
 
 " Currently not in use ----------------------------------------------------------------------------
 " Remove special characters
 "function! Remove_special()
-    "%s/á/a/g
-    "%s/é/e/g
-    "%s/í/i/g
-    "%s/ó/o/g
-    "%s/ú/u/g
-    "%s/ã/a/g
-    "%s/õ/o/g
-    "%s/ê/e/g
-    "%s/ô/o/g
-    "%s/ç/c/g
-    "%s/É/e/g
-    "%s/à/a/g
-    "%s/â/a/g
+"%s/á/a/g
+"%s/é/e/g
+"%s/í/i/g
+"%s/ó/o/g
+"%s/ú/u/g
+"%s/ã/a/g
+"%s/õ/o/g
+"%s/ê/e/g
+"%s/ô/o/g
+"%s/ç/c/g
+"%s/É/e/g
+"%s/à/a/g
+"%s/â/a/g
 "endfunction
 "nnoremap tr :call Remove_special()<CR>
 "call Remove_special()
@@ -225,18 +228,18 @@ map <C-F2> :call RenameFile()<cr>
 " Toggle transparent background
 "let t:is_transparent = 0
 "function! Toggle_transparent()
-    "if t:is_transparent == 0
-        "hi Normal guibg=NONE ctermbg=NONE
-        "let t:is_transparent = 1
-	"else
-		"highlight ColorColumn ctermbg=0 guibg=lightgrey
-        "set background=dark
-        "let t:is_transparent = 0
-		"let g:sonokai_transparent_background = 1
-    "endif
+"if t:is_transparent == 0
+"hi Normal guibg=NONE ctermbg=NONE
+"let t:is_transparent = 1
+"else
+"highlight ColorColumn ctermbg=0 guibg=lightgrey
+"set background=dark
+"let t:is_transparent = 0
+"let g:sonokai_transparent_background = 1
+"endif
 "endfunction
 "nnoremap tt :call Toggle_transparent()<CR>
-"call Toggle_transparent() 
+"call Toggle_transparent()
 
 
 " Templates and Files Settings ====================================================================
@@ -287,7 +290,7 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -414,13 +417,13 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " coc config
 let g:coc_global_extensions = [
-	\ 'coc-snippets',
-	\ 'coc-pairs',
-	\ 'coc-tsserver',
-	\ 'coc-eslint',
-	\ 'coc-prettier',
-	\ 'coc-json',
-	\ ]
+      \ 'coc-snippets',
+      \ 'coc-pairs',
+      \ 'coc-tsserver',
+      \ 'coc-eslint',
+      \ 'coc-prettier',
+      \ 'coc-json',
+      \ ]
 
 " Deleting all comment lines and whitespaces
 nnoremap <C-F3> :%s/\/\/.*<CR>
@@ -455,6 +458,10 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 nnoremap <c-a> :%!astyle --mode=c -s2<CR>
 "nnoremap <c-a> :%!astyle<CR>
 "nnoremap <c-a> :%!astyle --mode=c --style=ansi -s2<CR>
+
+" Vim Autoformater
+noremap <F3> :Autoformat<CR>
+au BufWrite * :Autoformat
 
 " Currently not in use ----------------------------------------------------------------------------
 " Vim Identation Guide
