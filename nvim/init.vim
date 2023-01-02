@@ -1,4 +1,4 @@
-" =================== Settings ====================
+" Settings ========================================================================================
 syntax on
 
 set encoding=utf-8  "Encoding must be UTF-8 on all files for YCM to work 
@@ -9,25 +9,20 @@ set shiftwidth=2
 set nowrap
 set autoindent
 set number relativenumber
-"set ruler
 set ai
 set nocompatible
 set mouse=a
 set clipboard+=unnamedplus
-"set noshowmode
 set noswapfile
 set nobackup
 set nowritebackup
-"set hidden
-"set hlsearch
 set incsearch
 set expandtab
 set laststatus=3
-
-"set timeout timeoutlen=300 ttimeoutlen=300
-"
-set background=dark
-highlight Comment ctermfg=green
+"set ruler
+"set hidden
+"set hlsearch
+"set noshowmode
 
 "Colors and vertical bar
 if has('termguicolors')
@@ -38,9 +33,13 @@ set colorcolumn=100
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 highlight Visual cterm=bold ctermbg=DarkRed ctermfg=NONE
 
+set background=dark
+highlight Comment ctermfg=green
+
+" Currently not in use ----------------------------------------------------------------------------
+"set timeout timeoutlen=300 ttimeoutlen=300
 "set formatoptions-=cro "Disable autocomment next line when hit <enter>
 
-" Currently not used settings
 "set noexpandtab
 "set smartcase
 "set title
@@ -52,7 +51,8 @@ highlight Visual cterm=bold ctermbg=DarkRed ctermfg=NONE
 "set noshowcmd
 "set backup
 
-" ==================== My plugings ====================
+
+" Pluggins ========================================================================================
 call plug#begin('$HOME/.config/nvim/plugged')
 
 " Colorschemes  
@@ -61,7 +61,7 @@ Plug 'https://github.com/arzg/vim-colors-xcode'
 Plug 'https://github.com/tomasr/molokai'
 Plug 'macguirerintoul/night_owl_light.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'ayu-theme/ayu-vim' " or other package manager
+Plug 'ayu-theme/ayu-vim'
 
 "Plug 'https://github.com/sainnhe/sonokai'
 "Plug 'https://github.com/tomasiser/vim-code-dark'
@@ -96,30 +96,32 @@ Plug 'jreybert/vimagit'
 Plug 'ap/vim-css-color'   " highlights hex code with respective color
 Plug 'https://github.com/preservim/nerdcommenter' " comment line with quick keybinding
 Plug 'https://github.com/dyng/ctrlsf.vim'
-"Plug 'https://github.com/jiangmiao/auto-pairs'
-"Plug 'bling/vim-airline'
-"Plug 'itchyny/lightline.vim'
 
-" Currently not in use
+" Currently not in use ----------------------------------------------------------------------------
 "Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 "Plug 'sheerun/vim-polyglot'	"not good
 "Plug 'https://github.com/vim-python/python-syntax'
 "Plug 'LukeSmithxyz/vimling'
 "Plug 'https://github.com/honza/vim-snippets'
 "Plug 'https://github.com/SirVer/ultisnips'
+"Plug 'https://github.com/jiangmiao/auto-pairs'
+"Plug 'bling/vim-airline'
+"Plug 'itchyny/lightline.vim'
 call plug#end()
 
-" ==================== Colorscheme settings ====================
+
+" Colorscheme settings ============================================================================
+colorscheme molokai
+    let g:molokai_original = 1
+    let g:rehash256 = 1
+    let g:molokai_transparent_background = 1
+
+" Currently not in use ----------------------------------------------------------------------------
 "let g:sonokai_style = 'default'
 "let g:sonokai_enable_italic = 1
 "let g:sonokai_disable_italic_comment = 1
 "let g:sonokai_transparent_background = 1
 "colorscheme sonokai
-
-colorscheme molokai
-    let g:molokai_original = 1
-    let g:rehash256 = 1
-    let g:molokai_transparent_background = 1
 
 "colorscheme onehalflight
 
@@ -150,7 +152,8 @@ colorscheme molokai
 	"set termguicolors
 "colorscheme solarized8
 
-" ==================== Key bindings ====================
+
+" Key Bingdings ===================================================================================
 " Compiling PDF
 nnoremap <c-c> :make<CR>
 
@@ -165,17 +168,20 @@ nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 nnoremap tq :tabclose<CR>
 
-" Bulk comment
+" Commenting
 inoremap <C-f> **********
 inoremap <C-l> ==========
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
-
 " Lauch FZF
 nnoremap ff :FZF<CR>
 
+" NERDTree shortcut
+nnoremap nd :NERDTreeToggle<CR>
+"nnoremap m :NERDTree<CR>
 
+" Currently not in use ----------------------------------------------------------------------------
 " Delete whole word with Ctrl+Backspace
 " Map Ctrl-Backspace to delete the previous word in insert mode.
 "noremap! <C-BS> <C-w>
@@ -183,35 +189,20 @@ nnoremap ff :FZF<CR>
 "inoremap <C-w> <C-\><C-o>dB
 "inoremap <C-BS> <C-\><C-o>db
 
-" NERDTree shortcut
-nnoremap nd :NERDTreeToggle<CR>
-"nnoremap m :NERDTree<CR>
 
-" vim-cpp-enhanced-highlight
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_concepts_highlight = 1
-let g:cpp_no_function_highlight = 1
+" Custom Functions ================================================================================
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <C-F2> :call RenameFile()<cr>
 
-" Toggling Coc
-nnoremap cd :CocDisable<CR>
-nnoremap ce :CocEnable<CR>
-
-" Js syntax
-let g:javascript_plugin_jsdoc = 1
-
-" Java syntax
-highlight link javaIdentifier NONE
-"highlight link javaDelimiter NONE
-
-" Enable Vim indentation guide
-"let g:indent_guides_enable_on_vim_startup = 1
-
-" Preetier
-command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
-
+" Currently not in use ----------------------------------------------------------------------------
 " Remove special characters
 "function! Remove_special()
     "%s/á/a/g
@@ -231,8 +222,6 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 "nnoremap tr :call Remove_special()<CR>
 "call Remove_special()
 
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 " Toggle transparent background
 "let t:is_transparent = 0
 "function! Toggle_transparent()
@@ -249,7 +238,8 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 "nnoremap tt :call Toggle_transparent()<CR>
 "call Toggle_transparent() 
 
-" ==================== Templates ====================
+
+" Templates and Files Settings ====================================================================
 autocmd BufNewFile main.c 0read ~/.config/nvim/templates/skeleton.c
 autocmd bufnewfile main.cpp 0read ~/.config/nvim/templates/skeleton.cpp
 autocmd bufnewfile main.cc 0read ~/.config/nvim/templates/skeleton.cc
@@ -272,7 +262,7 @@ au filetype pgn set wrap linebreak
 "au BufEnter *.md setf md
 "au filetype md set wrap linebreak
 
-" ==================== Coc Config ====================
+" Coc Config ======================================================================================
 " Some servers have issues with backup files, see #649.
 "set nobackup
 "set nowritebackup
@@ -422,11 +412,6 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-"Path to Eclipse LSP for ALE
-"let g:ale_java_eclipselsp_path = '/usr/share/java/jdtls'
-"let g:ale_java_eclipselsp_executable = '/usr/bin/jdtls'
-"let g:ale_java_eclipselsp_config_path = '$HOME/.jdtls'
-
 " coc config
 let g:coc_global_extensions = [
 	\ 'coc-snippets',
@@ -437,6 +422,49 @@ let g:coc_global_extensions = [
 	\ 'coc-json',
 	\ ]
 
+" Deleting all comment lines and whitespaces
+nnoremap <C-F3> :%s/\/\/.*<CR>
+nnoremap <C-F4> :%s/#.*<CR>
+nnoremap <C-F1> :g/^\s*$/d<CR>
+
+" Toggling Coc
+nnoremap cd :CocDisable<CR>
+nnoremap ce :CocEnable<CR>
+
+
+" Other Plugin Options ============================================================================
+" vim-cpp-enhanced-highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_no_function_highlight = 1
+
+" Js syntax
+let g:javascript_plugin_jsdoc = 1
+
+" Java syntax
+highlight link javaIdentifier NONE
+"highlight link javaDelimiter NONE
+
+" Preetier
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
+" Enabling Cpp formating with astyle
+nnoremap <c-a> :%!astyle --mode=c -s2<CR>
+"nnoremap <c-a> :%!astyle<CR>
+"nnoremap <c-a> :%!astyle --mode=c --style=ansi -s2<CR>
+
+" Currently not in use ----------------------------------------------------------------------------
+" Vim Identation Guide
+"let g:indent_guides_enable_on_vim_startup = 1
+
+"Path to Eclipse LSP for ALE
+"let g:ale_java_eclipselsp_path = '/usr/share/java/jdtls'
+"let g:ale_java_eclipselsp_executable = '/usr/bin/jdtls'
+"let g:ale_java_eclipselsp_config_path = '$HOME/.jdtls'
+
 " Emmet keybinding modification
 "let g:user_emmet_mode='i'
 "let g:user_emmet_leader_key='<c-b>'
@@ -445,26 +473,3 @@ let g:coc_global_extensions = [
 "let g:user_emmet_mode='n'    "only enable normal mode functions.
 "let g:user_emmet_mode='inv'  "enable all functions, which is equal to
 "let g:user_emmet_mode='a'    "enable all function in all mode.
-
-" Enabling Cpp formating with astyle
-"nnoremap <c-a> :%!astyle<CR>
-"nnoremap <c-a> :%!astyle --mode=c --style=ansi -s2<CR>
-nnoremap <c-a> :%!astyle --mode=c -s2<CR>
-
-" Deleting all comment lines and whitespaces
-nnoremap <C-F3> :%s/\/\/.*<CR>
-nnoremap <C-F4> :%s/#.*<CR>
-nnoremap <C-F1> :g/^\s*$/d<CR>
-
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
-map <C-F2> :call RenameFile()<cr>
-
-
