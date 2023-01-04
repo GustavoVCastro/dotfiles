@@ -1,7 +1,7 @@
 .zsh_history
 .bash_history
 nvim/plugged/*
-!nvim/plugged/.gitkeep
-nvim/others/
-fetch-files.sh
-gitconfig/
+
+               !nvim/plugged/.gitkeep
+               nvim/others/
+               gitconfig/
