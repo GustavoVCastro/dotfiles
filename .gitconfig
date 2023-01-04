@@ -1,0 +1,19 @@
+[includeIf "gitdir:/media/aldebaran/ex_ntfs/projects/main/"]
+[user]
+  email = "gustavovalcastro@gmail.com"
+  name = "Gustavo V. Castro"
+[core]
+  sshCommand = "ssh -i ~/.ssh/personal_key"
+
+[user]
+  email = "contact@gvcastro.com"
+  name = "Gustavo V. Castro"
+[core]
+  sshCommand = "ssh -i ~/.ssh/personal_key"
+
+;[includeIf "gitdir:/home/aldebaran/StudioProjects/clicktravel/"]
+  ;[user]
+    ;email = "gustavo.castro.1302842@sga.pucminas.br"
+    ;name = "Gustavo V. Castro"
+  ;[core]
+    ;sshCommand = "ssh -i ~/.ssh/id_rsa"

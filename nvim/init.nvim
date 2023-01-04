@@ -157,11 +157,17 @@ let g:molokai_transparent_background = 1
 
 
 " Key Bingdings ===================================================================================
-" Compiling PDF
+" Compile PDF in Latex
 nnoremap <c-c> :make<CR>
 
 " Quick Saving
 nnoremap <c-p> :w<CR>
+
+" Delete all comment lines and whitespaces
+nnoremap <C-F1> :g/^\s*$/d<CR>  "Delete blank lines
+nnoremap <C-F3> :%s/\/\/.*<CR>  "Delete // comments
+nnoremap <C-F4> :%s/#.*<CR>     "Delete # comments
+nnoremap <C-F5> :%s/\/\*.*<CR>  "Delete /* comments
 
 " Tab mangement
 nnoremap tn :tabnew<CR>
@@ -424,11 +430,6 @@ let g:coc_global_extensions = [
       \ 'coc-prettier',
       \ 'coc-json',
       \ ]
-
-" Deleting all comment lines and whitespaces
-nnoremap <C-F3> :%s/\/\/.*<CR>
-nnoremap <C-F4> :%s/#.*<CR>
-nnoremap <C-F1> :g/^\s*$/d<CR>
 
 " Toggling Coc
 nnoremap cd :CocDisable<CR>
